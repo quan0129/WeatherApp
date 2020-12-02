@@ -13,7 +13,9 @@ class WeatherRepository {
   WeatherRepository({@required this.httpClient}) : assert(httpClient != null);
 
   Future<int> getLocationIdFromCity(String city) async {
-    final response = await this.httpClient.get(locationUrl(city));
+    // final response = await this.httpClient.get(locationUrl(city));
+    final response = await this.httpClient.get(
+        'https://www.metaweather.com/api//api/location/search/?query=chicago');
     if (response.statusCode == 200) {
       final cities = jsonDecode(response.body) as List;
       return (cities.first)['woeid'] ?? Map();
