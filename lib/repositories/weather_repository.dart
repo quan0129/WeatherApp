@@ -16,7 +16,7 @@ class WeatherRepository {
     final response = await this.httpClient.get(locationUrl(city));
     if (response.statusCode == 200) {
       final cities = jsonDecode(response.body) as List;
-      return (cities.first)['woeid'] ?? 0;
+      return (cities.first)['woeid'] ?? Map();
     } else {
       throw Exception('Error getting location id of : ${city}');
     }

@@ -17,7 +17,7 @@ class _CitySearchScreen extends State<CitySearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Enter City"),
+        title: Text("Enter a city"),
       ),
       body: Form(
           child: Row(

@@ -21,12 +21,12 @@ class SettingScreen extends StatelessWidget {
               isThreeLine: true,
               subtitle: Text(
                   settingState.temperatureUnit == TemperatureUnit.celsius
-                      ? "Celsius"
-                      : "Farenheit"),
+                      ? 'Celsius'
+                      : 'Farenheit'),
               trailing: Switch(
                 value: settingState.temperatureUnit == TemperatureUnit.celsius,
                 onChanged: (_) => BlocProvider.of<SettingsBloc>(context)
-                    .add(SettingEventToggleUnit()),
+                    .add(SettingsEventToggleUnit()),
               ),
             );
           })

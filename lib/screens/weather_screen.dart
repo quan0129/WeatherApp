@@ -72,6 +72,12 @@ class _WeatherScreen extends State<WeatherScreen> {
               return BlocBuilder<ThemeBloc, ThemeState>(
                   builder: (context, themeState) {
                 return RefreshIndicator(
+                  onRefresh: () {
+                    BlocProvider.of<WeatherBloc>(context)
+                        .add(WeatherEventRefresh(city: weather.location));
+                    //return a "Completer object"
+                    return _completer.future;
+                  },
                   child: Container(
                     color: themeState.backgroundColor,
                     child: ListView(
@@ -99,10 +105,6 @@ class _WeatherScreen extends State<WeatherScreen> {
                       ],
                     ),
                   ),
-                  // onRefresh: () {
-                  //   BlocProvider.of<WeatherBloc>(context)
-                  //       .add(WeatherEventRefresh(city: weather.location));
-                  // }
                 );
               });
             }

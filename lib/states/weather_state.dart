@@ -5,7 +5,6 @@ import 'package:weatherApp/models/weather.dart';
 abstract class WeatherState extends Equatable {
   const WeatherState();
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -17,7 +16,6 @@ class WeatherStateSuccess extends WeatherState {
   final Weather weather;
   const WeatherStateSuccess({@required this.weather}) : assert(weather != null);
   @override
-  // TODO: implement props
   List<Object> get props => [weather];
 }
 

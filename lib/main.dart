@@ -8,6 +8,7 @@ import 'package:weatherApp/models/weather.dart';
 import 'package:weatherApp/repositories/weather_repository.dart';
 import 'package:http/http.dart' as http;
 import 'package:weatherApp/screens/weather_screen.dart';
+import 'package:weatherApp/states/them_state.dart';
 
 void main() {
   Bloc.observer = WeatherBlocObserver();
@@ -29,14 +30,20 @@ class MyApp extends StatelessWidget {
   MyApp({Key key, @required this.weatherRepository})
       : assert(weatherRepository != null),
         super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Weather App with Bloc',
-      home: BlocProvider(
-        create: (context) => WeatherBloc(weatherRepository: weatherRepository),
-        child: WeatherScreen(),
-      ),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, themState) {
+        return MaterialApp(
+          title: 'Flutter Weather App with Bloc',
+          home: BlocProvider(
+            create: (context) =>
+                WeatherBloc(weatherRepository: weatherRepository),
+            child: WeatherScreen(),
+          ),
+        );
+      },
     );
   }
 }

@@ -74,7 +74,7 @@ class TemperuteWidget extends StatelessWidget {
                             fontSize: 18, color: _themeState.textColor),
                       ),
                       Text(
-                        'Max Temp: ${_formattedTemperature(weather.temp, settingsSate.temperatureUnit)}',
+                        'Max Temp: ${_formattedTemperature(weather.maxTemp, settingsSate.temperatureUnit)}',
                         style: TextStyle(
                             fontSize: 18, color: _themeState.textColor),
                       )

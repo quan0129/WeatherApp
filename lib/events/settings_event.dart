@@ -1,9 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-abstract class SettingEvent extends Equatable {}
+abstract class SettingsEvent extends Equatable {}
 
-class SettingEventToggleUnit extends SettingEvent {
+class SettingsEventToggleUnit extends SettingsEvent {
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }

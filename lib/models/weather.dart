@@ -43,22 +43,28 @@ class Weather extends Equatable {
         minTemp,
         temp,
         maxTemp,
+        created,
         locationId,
         location,
       ];
+
   // convert json to string
   factory Weather.fromJson(dynamic jsonObject) {
     final consolidatedWeather = jsonObject['consonlidated_weather'][0];
     return Weather(
-      weatherCondition: consolidatedWeather['weather_state_abbr'] ?? '',
-      formattedCondition: consolidatedWeather['weather_state_name'] ?? '',
-      temp: consolidatedWeather['the_temp'] as double,
-      maxTemp: consolidatedWeather['max_temp'] as double,
-      locationId: jsonObject['woeid'] as int,
-      lasUpdated: DateTime.now(),
-      location: jsonObject['title']
-    );
+        weatherCondition: _mapStringToWeatherCondition(
+                consolidatedWeather['weather_state_abbr']) ??
+            '',
+        formattedCondition: consolidatedWeather['weather_state_name'] ?? '',
+        minTemp: consolidatedWeather['min_temp'] as double,
+        temp: consolidatedWeather['the_temp'] as double,
+        maxTemp: consolidatedWeather['max_temp'] as double,
+        locationId: jsonObject['woeid'] as int,
+        created: consolidatedWeather['created'],
+        lasUpdated: DateTime.now(),
+        location: jsonObject['title']);
   }
+
   // map string with weather
   static WeatherCondition _mapStringToWeatherCondition(String inputString) {
     Map<String, WeatherCondition> map = {
